@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mongo_db:
+    image: mongo:4.4
+    ports:
+      - 27017:27017
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/db
+  butomy:
+    image: butomy-app:1.0
+    ports:
+      - 5000:5001
+    environment:
+      - MONGO_URI=mongodb://admin:password@mongo_db:27017/
+      - JWT_SECRET=AaRSDYLOspo2nuMN
+      - JWT_LIFE=7d
+    depends_on:
+      - mongo_db
+volumes:
+  mongo-data:
+    driver: local

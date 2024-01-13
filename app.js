@@ -23,7 +23,7 @@ app.use('/user', authMiddleware, userRoute);
 
 app.use(errorHandler);
 
-const port = 5000;
+const port = 5001;
 
 const start = async () => {
   try {

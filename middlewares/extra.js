@@ -1,3 +1,4 @@
+const CustomError = require('../errors/customError');
 const Project = require('../models/projectSchema');
 
 // to find currect user part of the specific project
